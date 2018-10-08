@@ -1,13 +1,13 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
-      t.username, :text, null: false
-      t.display_name, :text
-      t.email, :text,  null: false
-      t.bio, :text
-      t.session_token, :text, null: false
-      t.password_digest, :text, null: false
-      
+      t.string :username, null: false
+      t.string :display_name
+      t.string :email,  null: false
+      t.text :bio
+      t.string :session_token, null: false
+      t.string :password_digest, null: false
+
       t.timestamps
     end
   end
