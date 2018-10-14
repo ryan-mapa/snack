@@ -13,7 +13,7 @@
 class Message < ApplicationRecord
   belongs_to :author,
     foreign_key: :author_id,
-    class: 'User'
+    class_name: 'User'
 
 
 end

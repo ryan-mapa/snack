@@ -14,6 +14,8 @@
 #
 
 class User < ApplicationRecord
+  attr_reader :password
+
   validates :username, :email, :session_token, :password_digest, presence: true
   validates :username, uniqueness:  true
   validates :password, length: { minimum: 6 }, allow_nil: true
@@ -23,7 +25,7 @@ class User < ApplicationRecord
 
   has_many :messages
   has_many :owned_workspaces,
-    class: 'Workspace'
+    class_name: 'Workspace'
   has_many :channel_users
 
 
@@ -43,13 +45,13 @@ class User < ApplicationRecord
   end
 
   def reset_session_token
-    self.session_token = SecureRandom.Urlsafe_base64
+    self.session_token = SecureRandom.urlsafe_base64
     self.save!
     self.session_token
   end
 
   def ensure_session_token
-    self.session_token ||= SecureRandom.Urlsafe_base64
+    self.session_token ||= SecureRandom.urlsafe_base64
   end
 
 

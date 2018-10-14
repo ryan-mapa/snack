@@ -14,7 +14,7 @@
 
 class Channel < ApplicationRecord
   belongs_to: creator,
-    class: 'User'
+    class_name: 'User'
 
   has_many :channel_users
 
