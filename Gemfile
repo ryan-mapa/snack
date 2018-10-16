@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'mini_magick', '~> 4.8'
 gem 'pry-rails'
 # Use Capistrano for deployment
+gem 'jquery-rails'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
