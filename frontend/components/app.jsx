@@ -1,9 +1,11 @@
 import React from 'react';
+import SignupComponent from './signup';
 
 const App = () => (
   <div>
     App-a-licious!
-  </div>  
+    <SignupComponent />
+  </div>
 )
 
 export default App;
