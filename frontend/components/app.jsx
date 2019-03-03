@@ -1,10 +1,13 @@
 import React from 'react';
-import SignupComponent from './signup';
+import SignupContainer from './signup_container';
+import NavContainer from './nav/nav_container';
 
 const App = () => (
   <div>
+    <NavContainer />
+    <br/>
     App-a-licious!
-    <SignupComponent />
+    <SignupContainer />
   </div>
 )
 
