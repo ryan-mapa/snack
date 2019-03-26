@@ -1,0 +1,17 @@
+.navbar {
+    background-color: red;
+    // height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.right-nav > * {
+    margin: 10px;
+}

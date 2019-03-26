@@ -9,17 +9,26 @@ class Nav extends React.Component {
     
     render() {
         const current = this.props.currentUser;
-        const welcome = (current === undefined || current === "logged out") ? "not logged in" : this.props.currentUser.username;
+        const welcome = (current === undefined || current === "logged out") ? 
+            "not logged in" : `Hi there, ${this.props.currentUser.username}`;
+
         const logoutButton = (this.props.currentUser === undefined) ? 
-            "" : 
+            <div>
+                <button onClick={this.props.openLoginModal}>Log In</button>
+                <button onClick={this.props.openSignupModal}>Sign Up</button>
+            </div> : 
             <button onClick={(e) => this.handleLogout(e)} >Logout</button>;
         
         console.log(this.props.currentUser);
-    
+        
         return (
             <div className="navbar">
-                {welcome}
-                {logoutButton}
+                <a >LOGO</a>
+                <div className="right-nav">
+                    {welcome}
+                    {logoutButton}
+                </div>
+                
             </div>
         );
     }

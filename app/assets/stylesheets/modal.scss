@@ -1,0 +1,33 @@
+.modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    position: absolute;
+    top: 100px;
+    z-index: 1;
+    height: 350px;
+    width: 300px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.modal-background {
+    position: absolute;
+    top: 0;
+    background-color: grey;
+    opacity: 0.3;
+    width: 100vw;
+    height: 100vh;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.error-msg {
+    color: red;
+    font-size: 14px;
+}

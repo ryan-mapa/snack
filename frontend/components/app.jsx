@@ -1,13 +1,15 @@
 import React from 'react';
-import SignupContainer from './signup_container';
 import NavContainer from './nav/nav_container';
+import ModalContainer from './modal/modal_container';
+import ChatRoom from './chat/chatroom';
 
 const App = () => (
   <div>
     <NavContainer />
     <br/>
-    App-a-licious!
-    <SignupContainer />
+    <ModalContainer />
+
+    <ChatRoom />
   </div>
 )
 
