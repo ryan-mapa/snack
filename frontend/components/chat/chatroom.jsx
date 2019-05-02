@@ -11,28 +11,28 @@ class ChatRoom extends React.Component {
     }
 
     componentDidMount() {
-        App.cable.subscriptions.create(
-            { channel: "ChatChannel" },
-            {
-                received: data => {
-                    switch(data.type) {
-                        case "message":
-                            this.setState({messages: this.state.messages.concat(data.message)});
-                            break;
-                        case "messages":
-                            this.setState({messages: data.messages });
-                            break;
-                    }
-                },
-                // received: data => {
-                //     this.setState({
-                //         messages: this.state.messages.concat(data.message)
-                //     });
-                // },
-                speak: function(data) {return this.perform('speak', data)},
-                load: function() {return this.perform("load")}
-            }
-        )
+        // App.cable.subscriptions.create(
+        //     { channel: "ChatChannel" },
+        //     {
+        //         received: data => {
+        //             switch(data.type) {
+        //                 case "message":
+        //                     this.setState({messages: this.state.messages.concat(data.message)});
+        //                     break;
+        //                 case "messages":
+        //                     this.setState({messages: data.messages });
+        //                     break;
+        //             }
+        //         },
+        //         // received: data => {
+        //         //     this.setState({
+        //         //         messages: this.state.messages.concat(data.message)
+        //         //     });
+        //         // },
+        //         speak: function(data) {return this.perform('speak', data)},
+        //         load: function() {return this.perform("load")}
+        //     }
+        // )
     }
 
     componentDidUpdate() {

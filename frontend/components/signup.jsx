@@ -8,6 +8,9 @@ class SignupComponent extends React.Component {
       email: "",
       password: ""
     };
+
+    this.firstInput = React.createRef();
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInputs = this.updateInputs.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -18,6 +21,7 @@ class SignupComponent extends React.Component {
   }
 
   componentDidMount() {
+    this.firstInput.current.focus();
     document.addEventListener("keydown", this.handleKeyPress);
   }
 
@@ -62,7 +66,11 @@ class SignupComponent extends React.Component {
         <ul>{errors}</ul>
 
         <label >Username: 
-          <input type="text" onChange={(e) => this.updateInputs(e, "username")} value={this.state.username}/> 
+          <input 
+            type="text" 
+            ref={this.firstInput}
+            onChange={(e) => this.updateInputs(e, "username")} 
+            value={this.state.username}/> 
         </label>
         <br/>
         {emailField}

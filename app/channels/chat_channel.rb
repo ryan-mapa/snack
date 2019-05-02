@@ -1,8 +1,13 @@
 class ChatChannel < ApplicationCable::Channel
+  # def subscribed
+  #   # stream_from "some_channel"
+  #   stream_for 'chat_channel'
+  #   stream_from ''
+  # end
+
   def subscribed
-    # stream_from "some_channel"
-    stream_for 'chat_channel'
-    stream_from ''
+    # stream_from "messages_channel"
+    stream_from "room-#{params["room"]}:messages"
   end
 
   def unsubscribed
