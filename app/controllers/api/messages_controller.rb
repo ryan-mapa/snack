@@ -1,12 +1,14 @@
-class MessagesController < ApplicationController
+class Api::MessagesController < ApplicationController
 
     def create
+        # @message = Message.new(message_params)
         @message = Message.new(message_params)
-
+        @message.channel_id = 1
+        @message.author_id = 1
+        
         if @message.save
             ActionCable
                 .server
-                # .broadcast("room-#{@message.channel_id}:messages",
                 .broadcast("room-#{@message.channel_id}:messages",
                         message: {
                             id: @message.id,
@@ -25,12 +27,14 @@ class MessagesController < ApplicationController
     end 
 
     def index
-        
+        p "BOOOMBAYAAAAAAHH"
+        @messages = Channel.find(1).messages
+        render "api/messages/index"
     end 
 
     private
 
     def message_params
-        params.require(:message).permit(:body, :channel_id)
+        params.require(:message).permit(:body)
     end
 end

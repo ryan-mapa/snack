@@ -18,5 +18,5 @@ export const createMessage = (message) => dispatch => (
 )
 
 export const getRoomMessages = (channelId) => dispatch => (
-    
+    MESSAGE_UTILS.getChannelMessages(channelId).then(messages => dispatch(receiveMessages(messages)))
 )

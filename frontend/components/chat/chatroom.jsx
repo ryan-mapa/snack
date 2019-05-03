@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageForm from './messageform';
+import MessageFormConatainer from './messageFormContainer';
 
 class ChatRoom extends React.Component {
     constructor(props) {
@@ -11,6 +11,7 @@ class ChatRoom extends React.Component {
     }
 
     componentDidMount() {
+
         // App.cable.subscriptions.create(
         //     { channel: "ChatChannel" },
         //     {
@@ -33,6 +34,7 @@ class ChatRoom extends React.Component {
         //         load: function() {return this.perform("load")}
         //     }
         // )
+
     }
 
     componentDidUpdate() {
@@ -41,14 +43,15 @@ class ChatRoom extends React.Component {
 
     loadChat(e) {
         e.preventDefault();
-        App.cable.subscriptions.subscriptions[0].load();
+        // App.cable.subscriptions.subscriptions[0].load();
+        this.props.getMessages(1);
     }
 
     render() {
-        const messageList = this.state.messages.map(message => {
+        const messageList = this.props.messages.map(message => {
             return (
                 <div className="message-text" key={ message.id }>
-                    {message}
+                    {message.body}
                     <div ref={this.bottom} />
                 </div>
             )
@@ -62,12 +65,10 @@ class ChatRoom extends React.Component {
                     Load Chat History
                 </button>
                 <div className="message-list">{messageList}</div>
-                <MessageForm />
+                <MessageFormConatainer />
             </div>
         );       
     }
-
-
 }
 
 export default ChatRoom;

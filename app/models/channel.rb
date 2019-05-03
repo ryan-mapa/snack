@@ -17,5 +17,6 @@ class Channel < ApplicationRecord
     class_name: 'User'
 
   has_many :channel_users
+  has_many :messages
 
 end

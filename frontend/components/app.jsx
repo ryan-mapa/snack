@@ -1,7 +1,7 @@
 import React from 'react';
 import NavContainer from './nav/nav_container';
 import ModalContainer from './modal/modal_container';
-import ChatRoom from './chat/chatroom';
+import ChatroomContainer from './chat/chatroomContainer';
 
 const App = () => (
   <div>
@@ -9,7 +9,7 @@ const App = () => (
     <br/>
     <ModalContainer />
 
-    <ChatRoom />
+    <ChatroomContainer />
   </div>
 )
 
