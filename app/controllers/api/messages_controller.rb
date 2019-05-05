@@ -18,8 +18,10 @@ class Api::MessagesController < ApplicationController
                             createdAt: @message.created_at,
                         },
                         user: {
-                            id: current_user.id,
-                            username: current_user.username,
+                            # id: current_user.id,
+                            # username: current_user.username,
+                            id: 1,
+                            username: User.find(1).username,
                         })
         else
             render json: @message.errors.full_messages, status: 422

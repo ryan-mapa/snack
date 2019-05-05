@@ -8,9 +8,9 @@ export const receiveMessages = (messages) => ({
     messages
 })
 
-export const receiveMessage = (message) => ({
+export const receiveMessage = (payload) => ({
     type: RECEIVE_MESSAGE,
-    message
+    payload
 })
 
 export const createMessage = (message) => dispatch => (
