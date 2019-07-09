@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchWorkspaces } from './../../../actions/workspace_actions'
+import { fetchWorkspaces } from '../../../actions/workspace_actions'
 
 class WorkspaceIndex extends React.Component {
 
@@ -9,9 +9,15 @@ class WorkspaceIndex extends React.Component {
     }
 
     render() {
+        if (this.props.workspaces.length === 0) return null;
+        const workies = this.props.workspaces.map(workspace => <li key={workspace.id}>{workspace.name}</li>)
+
         return (
             <div>
-                workspaceIndexo
+                <p>workspaceIndexo</p>
+                <ul>
+                    {workies}
+                </ul>
             </div>
         )
     }
@@ -19,7 +25,7 @@ class WorkspaceIndex extends React.Component {
 
 
 const msp = state => ({
-    workspaces: state.entities.workspaces,
+    workspaces: Object.values(state.entities.workspaces),
     currentUserId: state.session.currentUser
 })
 

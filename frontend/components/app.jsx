@@ -4,7 +4,8 @@ import ModalContainer from './modal/modal_container';
 import ChatroomContainer from './chat/chatroomContainer';
 import ListenerContainer from './chat/listenerContainer';
 import ChannelIndex from './chat/channel_index_container';
-import WorkspaceIndex from './chat/workspaces/workspace_container';
+import WorkspaceIndex from './chat/workspaces/workspace_index_container';
+import { AuthRoute } from '../util/route_utils'
 
 const App = () => (
   <div>
@@ -12,7 +13,8 @@ const App = () => (
     <br/>
     <ModalContainer />
     <WorkspaceIndex />
-    <ChannelIndex />
+    {/* <ChannelIndex /> */}
+    <AuthRoute component={ChannelIndex}/>
     <ListenerContainer />
     <ChatroomContainer />
   </div>

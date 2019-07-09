@@ -12,6 +12,7 @@ class SignupComponent extends React.Component {
     this.firstInput = React.createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
     this.updateInputs = this.updateInputs.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
@@ -23,6 +24,10 @@ class SignupComponent extends React.Component {
   componentDidMount() {
     this.firstInput.current.focus();
     document.addEventListener("keydown", this.handleKeyPress);
+  }
+
+  componentDidUpdate(prevProps) {
+
   }
 
   componentWillUnmount() {
@@ -44,7 +49,14 @@ class SignupComponent extends React.Component {
     }
   }
 
+  handleDemoSubmit(e) {
+    e.preventDefault();
+    this.props.clearSessionErrors();
+    this.props.login({username: 'ryan', password: '123456'}).then(() => this.props.closeModal());
+  }
+
   render() {
+    const formType = this.props.type;
     const header = this.props.type === "signup" ? "Sign Up" : "Log In";
     const submit = this.props.type === "signup" ?
         <input type="submit" onClick={this.handleSubmit} value="Sign me up!" /> :
@@ -79,6 +91,17 @@ class SignupComponent extends React.Component {
         </label>  
         <br/>
         {submit}
+        <br />
+        <br />
+        {
+          formType === 'login' ? 
+          <a onClick={this.props.openSignupModal} >sign me up instead</a> :
+          <a onClick={this.props.openLoginModal} >login insted</a>
+        }
+        <br />
+        <button onClick={this.handleDemoSubmit} >demo</button>
+
+
       </form>
     )
   }
