@@ -4,14 +4,15 @@ import Cable from 'actioncable';
 class Listener extends React.Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            cheese: ""
+        }
         this.createSocket = this.createSocket.bind(this);
     }
 
     componentDidMount() {
         this.createSocket(1);
     }
-
 
     createSocket(id) {
         console.log("Running create socket");
@@ -22,6 +23,7 @@ class Listener extends React.Component {
         //     cable = Cable.createConsumer("wss://cluck-cluck.herokuapp.com/cable");
         // }
         this.chats = cable.subscriptions.create(
+        // this.chats = App.cable.subscriptions.create( //App comes from cable.js (rails)
             {
                 channel: "MessageChannel",
                 room: id
@@ -34,6 +36,7 @@ class Listener extends React.Component {
                     console.log(`Disconnected!! from ${id}`);
                 },
                 received: data => {
+                    
                     // console.log(data);
                     // if (data.added) {
                     //     // if (data.userIds.includes(parseInt(this.props.currentUser))) {
@@ -48,9 +51,12 @@ class Listener extends React.Component {
                             message: {
                                 [data.message.id]: data.message
                             },
-                            user: data.user
+                            user: {
+                                [data.user.id]: data.user
+                            }
                         }
                         this.props.receiveMessage(payload);
+                        this.setState({cheese: "stringcheese"});
                     // }
                 }
             }               
@@ -58,6 +64,7 @@ class Listener extends React.Component {
     }
 
     render() {
+        console.log(this.state.cheese);
         return (
             <div>Listener</div>
         )

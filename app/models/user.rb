@@ -24,10 +24,16 @@ class User < ApplicationRecord
 
 
   has_many :messages
-  has_many :owned_workspaces,
+
+  has_many :workspaces,
+    foreign_key: :creator_id,
     class_name: 'Workspace'
+
   has_many :channel_users
 
+  has_many :channels,
+    through: :channel_users,
+    source: :channel
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

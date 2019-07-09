@@ -3,9 +3,9 @@ import * as MESSAGE_UTILS from '../util/message_api_util';
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
 
-export const receiveMessages = (messages) => ({
+export const receiveMessages = (payload) => ({
     type: RECEIVE_MESSAGES,
-    messages
+    payload
 })
 
 export const receiveMessage = (payload) => ({
@@ -18,5 +18,5 @@ export const createMessage = (message) => dispatch => (
 )
 
 export const getRoomMessages = (channelId) => dispatch => (
-    MESSAGE_UTILS.getChannelMessages(channelId).then(messages => dispatch(receiveMessages(messages)))
+    MESSAGE_UTILS.getChannelMessages(channelId).then(payload => dispatch(receiveMessages(payload)))
 )

@@ -1,5 +1,7 @@
 import React from 'react';
 import MessageFormConatainer from './messageFormContainer';
+import MessageContainer from './messages/messageContainer';
+
 
 class ChatRoom extends React.Component {
     constructor(props) {
@@ -51,8 +53,7 @@ class ChatRoom extends React.Component {
         const messageList = this.props.messages.map(message => {
             return (
                 <div className="message-text" key={ message.id }>
-                    {message.body}
-                    <div ref={this.bottom} />
+                    <MessageContainer message={message} />
                 </div>
             )
         })
@@ -64,8 +65,11 @@ class ChatRoom extends React.Component {
                 onClick={this.loadChat.bind(this)}>
                     Load Chat History
                 </button>
-                <div className="message-list">{messageList}</div>
-                <MessageFormConatainer />
+                <div className="message-list">
+                    {messageList}
+                    <div ref={this.bottom} />
+                </div>
+                <MessageFormConatainer currentUser={this.props.currentUser} />
             </div>
         );       
     }

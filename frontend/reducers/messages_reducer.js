@@ -5,7 +5,7 @@ const MessagesReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_MESSAGES:
-            return action.messages;
+            return action.payload.messages;
         case RECEIVE_MESSAGE:
             return Object.assign({}, state, action.payload.message);
         default:

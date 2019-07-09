@@ -4,7 +4,7 @@ class Api::MessagesController < ApplicationController
         # @message = Message.new(message_params)
         @message = Message.new(message_params)
         @message.channel_id = 1
-        @message.author_id = 1
+        @message.author_id = current_user ? current_user.id : 1
         
         if @message.save
             ActionCable
@@ -20,8 +20,8 @@ class Api::MessagesController < ApplicationController
                         user: {
                             # id: current_user.id,
                             # username: current_user.username,
-                            id: 1,
-                            username: User.find(1).username,
+                            id: current_user ? current_user.id : 1,
+                            username: current_user ? current_user.username : "nobody",
                         })
         else
             render json: @message.errors.full_messages, status: 422

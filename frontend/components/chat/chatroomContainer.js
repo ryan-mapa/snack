@@ -3,7 +3,8 @@ import Chatroom from './chatroom';
 import { getRoomMessages } from '../../actions/message_actions';
 
 const msp = (state) => ({
-    messages: Object.values(state.entities.messages)
+    messages: Object.values(state.entities.messages),
+    currentUser: state.entities.users[state.session.currentUser] || "SmileyFace"
 })
 
 const mdp = (dispatch) => ({
