@@ -6,17 +6,24 @@ import ListenerContainer from './chat/listenerContainer';
 import ChannelIndex from './chat/channel_index_container';
 import WorkspaceIndex from './chat/workspaces/workspace_index_container';
 import { AuthRoute } from '../util/route_utils'
+import Workspace from '../components/chat/workspaces/workspace';
+import { Route } from 'react-router-dom';
+import Main from '../components/main';
 
 const App = () => (
   <div>
     <NavContainer />
     <br/>
-    <ModalContainer />
-    <WorkspaceIndex />
-    {/* <ChannelIndex /> */}
-    <AuthRoute component={ChannelIndex}/>
     <ListenerContainer />
-    <ChatroomContainer />
+    <ModalContainer />
+    {/* <ChannelIndex /> */}
+    <AuthRoute component={Main}/>
+    {/* <ChatroomContainer /> */}
+    <Route path="/workspaces/:workspaceId" component={Workspace} />
+    <Route path="/workspaces/:workspaceId/channels/:channelId" component={ChatroomContainer} />
+
+    {/* <Route path="/workspaces/:workspaceId" component={Workspace} />
+    <Route path="/workspaces/:workspaceId/channels/:channelId" component={ChatroomContainer} /> */}
   </div>
 )
 

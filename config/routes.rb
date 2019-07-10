@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end 
     resources :messages, only: [:create, :index]
     resources :channels, only: [:index, :create]
-
+    resources :workspaces, only: [:show] 
     resource :session, only: [:new, :create, :destroy]
   end
 

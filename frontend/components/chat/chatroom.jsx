@@ -7,36 +7,10 @@ class ChatRoom extends React.Component {
     constructor(props) {
         super(props);
         this.state = { messages: [] };
-
-        // Not sure what this line does.
         this.bottom = React.createRef();
     }
 
     componentDidMount() {
-
-        // App.cable.subscriptions.create(
-        //     { channel: "ChatChannel" },
-        //     {
-        //         received: data => {
-        //             switch(data.type) {
-        //                 case "message":
-        //                     this.setState({messages: this.state.messages.concat(data.message)});
-        //                     break;
-        //                 case "messages":
-        //                     this.setState({messages: data.messages });
-        //                     break;
-        //             }
-        //         },
-        //         // received: data => {
-        //         //     this.setState({
-        //         //         messages: this.state.messages.concat(data.message)
-        //         //     });
-        //         // },
-        //         speak: function(data) {return this.perform('speak', data)},
-        //         load: function() {return this.perform("load")}
-        //     }
-        // )
-
     }
 
     componentDidUpdate() {
@@ -46,7 +20,7 @@ class ChatRoom extends React.Component {
     loadChat(e) {
         e.preventDefault();
         // App.cable.subscriptions.subscriptions[0].load();
-        this.props.getMessages(1);
+        this.props.getMessages(this.props.channelId);
     }
 
     render() {
