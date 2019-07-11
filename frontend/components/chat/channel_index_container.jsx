@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class ChannelIndex extends React.Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class ChannelIndex extends React.Component {
     render() {
         if (this.props.channels.length === undefined) return null;
     
-        const channels = this.props.channels.map(channel => <Link to={`/workspaces/${this.props.workspaceId}/channels/${channel.id}`} key={channel.id}>channel: {channel.name}</Link> )
+        const channels = this.props.channels.map(channel => <Link to={`/workspaces/${this.props.workspaceId}/channels/${channel.id}`} key={channel.id}><div>{channel.name}</div></Link> )
         return(
             <div>
                 Channel Index:
@@ -22,13 +22,18 @@ class ChannelIndex extends React.Component {
     }
 } 
 
+const channelSelector = (state, ownProps) => {
+    const workspaceId = ownProps.match.params.workspaceId;
+    const channels = Object.values(state.entities.channels);
+    return channels.filter(c => c.workspaceId == workspaceId);
+}
 
-const msp = state => ({
-    channels: Object.values(state.entities.channels)
+const msp = (state, ownProps) => ({
+    channels: channelSelector(state, ownProps)
 })
 
 const mdp = dispatch => ({
 
 })
 
-export default connect(msp, mdp)(ChannelIndex);
+export default withRouter(connect(msp, mdp)(ChannelIndex));

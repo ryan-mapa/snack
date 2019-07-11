@@ -1,10 +1,8 @@
 class Api::MessagesController < ApplicationController
 
     def create
-        # @message = Message.new(message_params)
         @message = Message.new(message_params)
-        @message.channel_id = 1
-        @message.author_id = current_user ? current_user.id : 1
+        @message.author_id = current_user.id
         
         if @message.save
             ActionCable
@@ -18,10 +16,8 @@ class Api::MessagesController < ApplicationController
                             createdAt: @message.created_at,
                         },
                         user: {
-                            # id: current_user.id,
-                            # username: current_user.username,
-                            id: current_user ? current_user.id : 1,
-                            username: current_user ? current_user.username : "nobody",
+                            id: current_user.id,
+                            username: current_user.username
                         })
         else
             render json: @message.errors.full_messages, status: 422
@@ -29,14 +25,13 @@ class Api::MessagesController < ApplicationController
     end 
 
     def index
-        p "BOOOMBAYAAAAAAHH"
-        @messages = Channel.find(1).messages
+        @messages = Channel.find(params[:channelId]).messages
         render "api/messages/index"
     end 
 
     private
 
     def message_params
-        params.require(:message).permit(:body)
+        params.require(:message).permit(:body, :channel_id)
     end
 end

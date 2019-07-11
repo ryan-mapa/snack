@@ -3,7 +3,7 @@ import React from 'react';
 class MesssageForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { body: "" }
+        this.state = { body: "", channel_id: props.channelId}
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
     }
@@ -14,8 +14,7 @@ class MesssageForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // App.cable.subscriptions.subscriptions[0].speak({message: this.state.body });
-        console.log("damn.");
+        
         this.props.createMessage(this.state);
         this.setState({ body: "" });
     }

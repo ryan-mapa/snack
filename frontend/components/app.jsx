@@ -14,11 +14,13 @@ const App = () => (
   <div>
     <NavContainer />
     <br/>
-    <ListenerContainer />
     <ModalContainer />
     {/* <ChannelIndex /> */}
-    <AuthRoute component={Main}/>
+    <Route path="/workspaces/:workspaceId/channels/:channelId" component={ListenerContainer} />
+    {/* <ListenerContainer /> */}
+    <AuthRoute path="/" component={Main}/>
     {/* <ChatroomContainer /> */}
+    {/* <WorkspaceIndex /> */}
     <Route path="/workspaces/:workspaceId" component={Workspace} />
     <Route path="/workspaces/:workspaceId/channels/:channelId" component={ChatroomContainer} />
 

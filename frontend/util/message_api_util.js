@@ -9,7 +9,8 @@ export const createMessage = (message) => (
 export const getChannelMessages = (channelId) => (
     $.ajax({
         method: 'GET',
-        url: `/api/messages`
+        url: `/api/messages`,
         // url: `/api/${channelId}/messages`
+        data: {channelId}
     })
 )

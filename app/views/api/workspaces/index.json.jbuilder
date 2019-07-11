@@ -10,7 +10,7 @@ json.channels do
     @workspaces.each do |workspace|
         workspace.channels.each do |channel|
             json.set! channel.id do
-                json.extract! channel, :id, :name, :creator_id, :description
+                json.extract! channel, :id, :name, :creator_id, :description, :workspace_id
             end 
         end
     end 

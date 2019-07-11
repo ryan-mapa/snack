@@ -13,6 +13,16 @@ const AuthenticatedRoute = ({component: Component, loggedIn, openLoggy, path, ex
     }}/>
 }
 
+const Protected = ({ component: Component, path, loggedIn, exact }) => (
+    <Route path={path} exact={exact} render={(props) => (
+        loggedIn ? (
+            <Component {...props} />
+        ) : (
+                <Redirect to="/" />
+            )
+    )} />
+);
+
 
 const msp = state => ({
     loggedIn: !!(state.session.currentUser)
@@ -22,4 +32,4 @@ const mdp = dispatch => ({
     openLoggy: () => dispatch(openLoginModal())
 })
 
-export const AuthRoute = connect(msp, mdp)(AuthenticatedRoute);
+export const AuthRoute = connect(msp, mdp)(Protected);

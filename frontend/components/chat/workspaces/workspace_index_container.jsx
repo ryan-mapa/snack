@@ -10,7 +10,7 @@ class WorkspaceIndex extends React.Component {
 
     render() {
         if (this.props.workspaces.length === 0) return null;
-        const workies = this.props.workspaces.map(workspace => <Link to={`/workspaces/${workspace.id}`} key={workspace.id}>{workspace.name}</Link>)
+        const workies = this.props.workspaces.map(workspace => <Link to={`/workspaces/${workspace.id}`} key={workspace.id}><div>{workspace.name}</div></Link>)
 
         return (
             <div>

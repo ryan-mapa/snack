@@ -4,14 +4,21 @@ import Cable from 'actioncable';
 class Listener extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            cheese: ""
-        }
         this.createSocket = this.createSocket.bind(this);
     }
 
     componentDidMount() {
-        this.createSocket(1);
+        if (this.props.channelId) {
+            this.createSocket(this.props.channelId);
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.channelId !== prevProps.channelId) {
+            if (this.props.channelId) {
+                this.createSocket(this.props.channelId);
+            }
+        }
     }
 
     createSocket(id) {
@@ -36,35 +43,22 @@ class Listener extends React.Component {
                     console.log(`Disconnected!! from ${id}`);
                 },
                 received: data => {
-                    
-                    // console.log(data);
-                    // if (data.added) {
-                    //     // if (data.userIds.includes(parseInt(this.props.currentUser))) {
-                    //         this.createSocket(data.chatroomId);
-                    //         this.props.fetchChatroom(data.chatroomId);
-                    //     // }
-                    // } else {
-                        console.log("data come thru");
-                        console.log(data);
-                        
-                        let payload = {
-                            message: {
-                                [data.message.id]: data.message
-                            },
-                            user: {
-                                [data.user.id]: data.user
-                            }
+                    let payload = {
+                        messages: {
+                            [data.message.id]: data.message
+                        },
+                        user: {
+                            [data.user.id]: data.user
                         }
-                        this.props.receiveMessage(payload);
-                        this.setState({cheese: "stringcheese"});
-                    // }
+                    }
+                    this.props.receiveMessage(payload);
+                    // this.setState({cheese: "stringcheese"});
                 }
             }               
         );
     }
 
     render() {
-        console.log(this.state.cheese);
         return (
             <div>Listener</div>
         )

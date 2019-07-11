@@ -35,18 +35,22 @@ ryan = User.new({username: 'ryan', password: pw, display_name: 'Guest', email: '
 vanessa = User.new({username: 'vanessa', password: pw, display_name: 'Vanessa', email: 'vanessa@email.com', bio: 'Vanessa is my name'})
 
 ryan.save!
+vanessa.save!
 
 #workspaces
-debugger
-w1 = Workspace.new({creator_id: ryan.id, name: 'firstspace'})
-w1.save!
+w1 = Workspace.create!({creator_id: ryan.id, name: 'first space'})
+w2 = Workspace.create!({creator_id: ryan.id, name: 'second space'})
 
 #channels
-main_chat = Channel.new({name: 'Main Chat', creator_id: ryan.id, workspace_id: w1.id,description: 'Default chat'})
-main_chat.save!
+chat1 = Channel.create!({name: 'chat1', creator_id: ryan.id, workspace_id: w1.id,description: 'Default chat'})
+chat2 = Channel.create!({name: 'chat2', creator_id: ryan.id, workspace_id: w1.id,description: 'non default'})
+chat3 = Channel.create!({name: 'chat3', creator_id: ryan.id, workspace_id: w2.id,description: 'woot!'})
 
 #channel users
-ChannelUser.create!({channel_id: main_chat.id, user_id: ryan.id})
+ChannelUser.create!({channel_id: chat1.id, user_id: ryan.id})
+ChannelUser.create!({channel_id: chat1.id, user_id: vanessa.id})
+ChannelUser.create!({channel_id: chat2.id, user_id: ryan.id})
+ChannelUser.create!({channel_id: chat2.id, user_id: vanessa.id})
 
 
 
