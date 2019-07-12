@@ -6,19 +6,25 @@ import MessageContainer from './messages/messageContainer';
 class ChatRoom extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { messages: [] };
+        // this.state = { messages: this.props.messages };
         this.bottom = React.createRef();
+        this.loadChat = this.loadChat.bind(this);
     }
 
     componentDidMount() {
+        this.loadChat()
     }
 
-    componentDidUpdate() {
-        this.bottom.current.scrollIntoView();
+    componentDidUpdate(prevProps) {
+        if (prevProps.channelId !== this.props.channelId) {
+            this.loadChat();
+            this.bottom.current.scrollIntoView();
+            // this.setState({messages: []});
+        }
     }
 
     loadChat(e) {
-        e.preventDefault();
+        // e.preventDefault();
         // App.cable.subscriptions.subscriptions[0].load();
         this.props.getMessages(this.props.channelId);
     }
@@ -34,7 +40,7 @@ class ChatRoom extends React.Component {
 
         return (
             <div className="chatroom-container">
-                <h3>Chat Room</h3>
+                <h3>Chatroom: {this.props.channelId}</h3>
                 <button className="load-button" 
                 onClick={this.loadChat.bind(this)}>
                     Load Chat History

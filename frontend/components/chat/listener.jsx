@@ -23,13 +23,14 @@ class Listener extends React.Component {
 
     createSocket(id) {
         console.log("Running create socket");
-        let cable = Cable.createConsumer("ws://localhost:3000/cable");
+        // let cable = Cable.createConsumer("ws://localhost:3000/cable");
         // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
         //     cable = Cable.createConsumer("ws://localhost:3000/cable");
         // } else {
         //     cable = Cable.createConsumer("wss://cluck-cluck.herokuapp.com/cable");
         // }
-        this.chats = cable.subscriptions.create(
+        // this.chats = cable.subscriptions.create( // no longer need this and line 26 (let cable...) with below App.cable from cable.js
+        this.chats = App.cable.subscriptions.create(
         // this.chats = App.cable.subscriptions.create( //App comes from cable.js (rails)
             {
                 channel: "MessageChannel",
