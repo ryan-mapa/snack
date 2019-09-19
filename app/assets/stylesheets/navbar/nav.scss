@@ -2,8 +2,9 @@
     background-color: red;
     // height: 50px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    // justify-content: space-between;
+    // align-items: center;
     padding: 10px;
 }
 
@@ -14,4 +15,26 @@
 
 .right-nav > * {
     margin: 10px;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: c;
+}
+
+.side-nav {
+    width: 200px;
+    background-color: beige;
+    height: 100vh;
+}
+
+.inner-side-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 76px);
+}
+
+.nav-closed {
+    display: none;
 }
