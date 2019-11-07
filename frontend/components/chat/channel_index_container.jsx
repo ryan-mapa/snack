@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import NewItemButton from '../utils/newItemButton';
 
 class ChannelIndex extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class ChannelIndex extends React.Component {
         const channels = this.props.channels.map(channel => <Link to={`/workspaces/${this.props.workspaceId}/channels/${channel.id}`} key={channel.id}><div>{channel.name}</div></Link> )
         return(
             <div>
-                Channel Index:
+                Channel Index: <NewItemButton type='channel'/>
                 <ul>
                     {channels}
                 </ul>

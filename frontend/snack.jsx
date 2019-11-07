@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const user = window.currentUser;
   window.currentUser = undefined;
-
+  
   let preloadedState;
   if (user) {
     preloadedState = {

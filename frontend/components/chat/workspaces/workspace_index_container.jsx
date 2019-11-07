@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchWorkspaces } from '../../../actions/workspace_actions'
 import { Link, Redirect } from 'react-router-dom';
+import NewItemButton from '../../utils/newItemButton';
 
 class WorkspaceIndex extends React.Component {
     componentDidMount() {
@@ -14,7 +15,7 @@ class WorkspaceIndex extends React.Component {
 
         return (
             <div>
-                <p>workspaceIndexo</p>
+                workspaceIndexo <NewItemButton type='workspace' />
                 <ul>
                     {workies}
                 </ul>
