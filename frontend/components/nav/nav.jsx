@@ -19,7 +19,6 @@ class Nav extends React.Component {
             </div> : 
             <button onClick={(e) => this.handleLogout(e)} >Logout</button>;
         
-        console.log(this.props.currentUser);
         
         return (
             <div className="navbar">

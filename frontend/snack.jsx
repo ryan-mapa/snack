@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     preloadedState = {};
   }
-  console.log("Current User: ", preloadedState);
 
   const store = configureStore(preloadedState);
   window.store = store;

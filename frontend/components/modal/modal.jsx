@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupContainer from '../../components/signup_container';
+import SignupContainer from '../session/session_container';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -15,6 +15,7 @@ class Modal extends React.Component {
         if (this.props.modalType === "") return null;
         let modalContent;
         if (this.props.modalType === "signup") modalContent = <SignupContainer />;
+        if (this.props.modalType === "login") modalContent = <SignupContainer />;
         if (this.props.modalType === "channel") modalContent = <p>Channel Create Form</p>;
         if (this.props.modalType === "workspace") modalContent = <p>Workspace Create Form</p>;
 
