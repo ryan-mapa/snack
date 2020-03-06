@@ -28,6 +28,7 @@ User.destroy_all
 Workspace.destroy_all
 Channel.destroy_all
 Message.destroy_all
+WorkspaceUser.destroy_all
 
 # users
 pw = '123456'
@@ -37,6 +38,12 @@ vanessa = User.create!({username: 'vanessa', password: pw, display_name: 'Vaness
 #workspaces
 w1 = Workspace.create!({creator_id: ryan.id, name: 'first space'})
 w2 = Workspace.create!({creator_id: ryan.id, name: 'second space'})
+
+#workspace users
+wu1 = WorkspaceUser.create!({user_id: ryan.id, workspace_id: w1.id})
+wu1 = WorkspaceUser.create!({user_id: ryan.id, workspace_id: w2.id})
+wu1 = WorkspaceUser.create!({user_id: vanessa.id, workspace_id: w1.id})
+wu1 = WorkspaceUser.create!({user_id: vanessa.id, workspace_id: w2.id})
 
 #channels
 chat1 = Channel.create!({name: 'chat1', creator_id: ryan.id, workspace_id: w1.id,description: 'Default chat'})
@@ -50,6 +57,8 @@ ChannelUser.create!({channel_id: chat1.id, user_id: ryan.id})
 ChannelUser.create!({channel_id: chat1.id, user_id: vanessa.id})
 ChannelUser.create!({channel_id: chat2.id, user_id: ryan.id})
 ChannelUser.create!({channel_id: chat2.id, user_id: vanessa.id})
+
+
 
 
 

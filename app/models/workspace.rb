@@ -13,7 +13,12 @@ class Workspace < ApplicationRecord
   belongs_to :creator,
     foreign_key: :creator_id,
     class_name: 'User'
-  
+
+    has_many :workspace_users
     has_many :channels
+
+    has_many :users,
+      through: :workspace_users,
+      source: :user
 
 end

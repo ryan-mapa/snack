@@ -22,12 +22,13 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-
+  has_many :workspace_users
   has_many :messages
 
   has_many :workspaces,
-    foreign_key: :creator_id,
-    class_name: 'Workspace'
+    through: :workspace_users,
+    source: :workspace
+  
 
   has_many :channel_users
 
