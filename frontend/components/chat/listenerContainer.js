@@ -7,7 +7,9 @@ const msp = (state, ownProps) => {
     return {   
         // channelId: ownProps.match.params.channelId || null
         currentUser: state.session.currentUser,
-        channelIds: Object.values(state.entities.channelUsers).filter((cu) => cu.userId == state.session.currentUser)
+        channelIds: Object.values(state.entities.channelUsers)
+                    .filter((cu) => cu.userId == state.session.currentUser)
+                    .map(cu => cu.channelId)
     }
 }
 

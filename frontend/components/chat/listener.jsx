@@ -34,7 +34,7 @@ class Listener extends React.Component {
                 // this.chats = cable.subscriptions.create( // no longer need this and line 26 (let cable...) with below App.cable from cable.js
         
         let channelIds = this.props.channelIds;
-        debugger
+        
         this.chats = channelIds.map(id => {
             App.cable.subscriptions.create(
             // this.chats = App.cable.subscriptions.create( //App comes from cable.js (rails)
