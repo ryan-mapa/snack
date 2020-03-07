@@ -5,7 +5,9 @@ import { withRouter } from 'react-router-dom';
 
 const msp = (state, ownProps) => {
     return {   
-        channelId: ownProps.match.params.channelId || null
+        // channelId: ownProps.match.params.channelId || null
+        currentUser: state.session.currentUser,
+        channelIds: Object.values(state.entities.channelUsers).filter((cu) => cu.userId == state.session.currentUser)
     }
 }
 

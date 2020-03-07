@@ -10,7 +10,7 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_MESSAGES:
             return Object.assign({}, state, action.payload.users);
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, state, action.user)
+            return Object.assign({}, state, action.payload.users)
         default:
             return state;
     }

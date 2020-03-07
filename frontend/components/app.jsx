@@ -17,7 +17,8 @@ const App = () => (
         <NavContainer className='nav-container' />
         <div className='inner-side-nav' >
           <div>
-            <Route path="/workspaces/:workspaceId/channels/:channelId" component={ListenerContainer} />
+            <ListenerContainer />
+            {/* <Route path="/workspaces/:workspaceId/channels/:channelId" component={ListenerContainer} /> */}
             <AuthRoute path="/" component={Main}/>
             <Route path="/workspaces/:workspaceId" component={Workspace} />
           </div>

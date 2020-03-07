@@ -5,18 +5,17 @@ import Root from './root';
 
 document.addEventListener('DOMContentLoaded', () => {
   
-  const user = window.currentUser;
+  const userInfo = window.currentUser;
   window.currentUser = undefined;
   
   let preloadedState;
-  if (user) {
+  if (userInfo) {
     preloadedState = {
       entities: {
-        users: {
-          [user.id]: user
-        }
+        users: userInfo.users,
+        channelUsers: userInfo.channelUsers
       },
-      session: {currentUser: user.id}
+      session: { currentUser: Object.keys(userInfo.users)[0]}
     };
   } else {
     preloadedState = {};

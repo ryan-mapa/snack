@@ -5,10 +5,12 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 
-export const receiveCurrentUser = user => ({
-  type: RECEIVE_CURRENT_USER,
-  user
-});
+export const receiveCurrentUser = payload => {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    payload
+  }
+};
 
 export const logoutUser = () => ({
   type: LOGOUT_CURRENT_USER,
