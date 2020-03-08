@@ -34,6 +34,7 @@ WorkspaceUser.destroy_all
 pw = '123456'
 ryan = User.create!({username: 'ryan', password: pw, display_name: 'Guest', email: 'ryan@email.com', bio: 'i eat da fuds.'})
 vanessa = User.create!({username: 'vanessa', password: pw, display_name: 'Vanessa', email: 'vanessa@email.com', bio: 'Vanessa is my name'})
+olivia = User.create!({username: 'olivia', password: pw, display_name: 'Olivia', email: 'olivia@email.com', bio: 'Mukbang master'})
 
 #workspaces
 w1 = Workspace.create!({creator_id: ryan.id, name: 'first space'})
@@ -43,6 +44,7 @@ w2 = Workspace.create!({creator_id: ryan.id, name: 'second space'})
 wu1 = WorkspaceUser.create!({user_id: ryan.id, workspace_id: w1.id})
 wu1 = WorkspaceUser.create!({user_id: ryan.id, workspace_id: w2.id})
 wu1 = WorkspaceUser.create!({user_id: vanessa.id, workspace_id: w1.id})
+wu1 = WorkspaceUser.create!({user_id: olivia.id, workspace_id: w2.id})
 
 #channels
 chat1 = Channel.create!({name: 'chat1', creator_id: ryan.id, workspace_id: w1.id,description: 'Default chat'})
@@ -59,8 +61,9 @@ ChannelUser.create!({channel_id: chat4.id, user_id: ryan.id})
 ChannelUser.create!({channel_id: chat5.id, user_id: ryan.id})
 ChannelUser.create!({channel_id: chat1.id, user_id: vanessa.id})
 ChannelUser.create!({channel_id: chat2.id, user_id: vanessa.id})
-
-
+ChannelUser.create!({channel_id: chat3.id, user_id: olivia.id})
+ChannelUser.create!({channel_id: chat4.id, user_id: olivia.id})
+ChannelUser.create!({channel_id: chat5.id, user_id: olivia.id})
 
 
 
