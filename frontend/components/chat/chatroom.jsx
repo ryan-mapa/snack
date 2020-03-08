@@ -21,6 +21,10 @@ class ChatRoom extends React.Component {
             this.bottom.current.scrollIntoView();
             // this.setState({messages: []});
         }
+
+        if (prevProps.messages.length !== this.props.messages.length) {
+            this.bottom.current.scrollIntoView();
+        }
     }
 
     loadChat(e) {
