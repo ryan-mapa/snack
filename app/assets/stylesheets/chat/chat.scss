@@ -10,6 +10,7 @@ li {
 
 .message-list {
   overflow-y: scroll;
+  overflow-wrap: break-word;
   height: 300px;
   width: 400px;
   border: solid gray 1px;

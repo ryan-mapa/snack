@@ -21,6 +21,11 @@ class Listener extends React.Component {
 
     componentWillUnmount() {
         // close this.chats
+        for (let i = 0; i < this.chats.length; i++) {
+            let channel = this.chats[i];
+            channel.unsubscribe();
+        }
+        
     }
 
     createSockets() {
@@ -36,7 +41,7 @@ class Listener extends React.Component {
         let channelIds = this.props.channelIds;
         
         this.chats = channelIds.map(id => {
-            App.cable.subscriptions.create(
+            return App.cable.subscriptions.create(
             // this.chats = App.cable.subscriptions.create( //App comes from cable.js (rails)
                 {
                     channel: "MessageChannel",

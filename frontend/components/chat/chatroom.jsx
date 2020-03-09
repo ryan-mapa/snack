@@ -22,9 +22,9 @@ class ChatRoom extends React.Component {
             // this.setState({messages: []});
         }
 
-        if (prevProps.messages.length !== this.props.messages.length) {
+        // if (prevProps.messages.length !== this.props.messages.length) {
             this.bottom.current.scrollIntoView();
-        }
+        // }
     }
 
     loadChat(e) {
