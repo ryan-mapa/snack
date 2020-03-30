@@ -1,11 +1,12 @@
 import React from 'react';
-import { openModal } from '../../actions/modal_actions';
+import { openModal, updateModalData } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 
 const msp = (state) => ({})
 
 const mdp = (dispatch) => ({
-    openModal: (type) => dispatch(openModal(type))
+    openModal: (type) => dispatch(openModal(type)),
+    // updateModalData: (data) => dispatch(updateModalData(data))
 })
 
 class NewItemButton extends React.Component {
@@ -17,6 +18,7 @@ class NewItemButton extends React.Component {
     handlePress() {
         console.log(`Make a new ${this.props.type}!!!`);
         this.props.openModal(this.props.type);
+        // this.props.updateModalData(this.props.data);
     }
 
     render() {

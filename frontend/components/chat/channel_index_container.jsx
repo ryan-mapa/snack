@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import NewItemButton from '../utils/newItemButton';
+import ChannelIndexItem from './channelIndexItem';
 
 class ChannelIndex extends React.Component {
     constructor(props) {
@@ -11,10 +12,11 @@ class ChannelIndex extends React.Component {
     render() {
         if (this.props.channels.length === undefined) return null;
     
-        const channels = this.props.channels.map(channel => <Link to={`/workspaces/${this.props.workspaceId}/channels/${channel.id}`} key={channel.id}><div>{channel.name}</div></Link> )
+        const channels = this.props.channels.map(channel => 
+                                <ChannelIndexItem key={channel.id} channel={channel} />)
         return(
             <div>
-                Channel Index: <NewItemButton type='channel'/>
+                Channel Index: <NewItemButton type='channel' data={this.props.workspaceId} />
                 <ul>
                     {channels}
                 </ul>
@@ -30,7 +32,7 @@ const channelSelector = (state, ownProps) => {
 }
 
 const msp = (state, ownProps) => ({
-    channels: channelSelector(state, ownProps)
+    channels: channelSelector(state, ownProps),
 })
 
 const mdp = dispatch => ({

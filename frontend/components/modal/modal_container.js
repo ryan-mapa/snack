@@ -3,7 +3,8 @@ import Modal from './modal';
 import { closeModal } from '../../actions/ui_actions';
 
 const msp = (state) => ({
-    modalType: state.ui.modal
+    modalType: state.ui.modal,
+    modalData: state.ui.modalData
 })
 
 const mdp = (dispatch) => ({

@@ -23,6 +23,16 @@ class Api::UsersController < ApplicationController
   def index
   end
 
+  def search
+    @workspace_users = User.joins(:workspace_users)
+                            .where('workspace_users.workspace_id = ?', params[:workspace_id])
+
+    if @workspace_users.length < 5
+      render json: @workspace_users
+    else
+    end 
+  end 
+
   def user_params
     params.require(:user).permit(:email, :username, :password)
   end

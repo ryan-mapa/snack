@@ -33,3 +33,10 @@ li {
   padding: 3px;
   font-family: helvetica;
 }
+
+.channel-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 120px;
+}

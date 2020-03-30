@@ -1,5 +1,4 @@
 import React from 'react';
-import Cable from 'actioncable';
 
 class Listener extends React.Component {
     constructor(props) {
