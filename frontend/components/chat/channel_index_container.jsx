@@ -13,7 +13,10 @@ class ChannelIndex extends React.Component {
         if (this.props.channels.length === undefined) return null;
     
         const channels = this.props.channels.map(channel => 
-                                <ChannelIndexItem key={channel.id} channel={channel} />)
+                                <ChannelIndexItem 
+                                    key={channel.id}
+                                    workspaceId={this.props.workspaceId} 
+                                    channel={channel} />)
         return(
             <div>
                 Channel Index: <NewItemButton type='channel' data={this.props.workspaceId} />

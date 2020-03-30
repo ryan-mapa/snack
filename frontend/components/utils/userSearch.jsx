@@ -9,26 +9,30 @@ class UserSearch extends React.Component {
         super(props);
         this.state = {
             query: "",
-            userList: []
+            userList: [],
+            typing: true
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.throttledSearch = this.throttledSearch.bind(this);
     }
 
     onChange(e) {
         e.preventDefault();
-        this.setState({query: e.target.value}, () => 
-            this.props.search(this.state.query, this.props.workspaceId)
-                .then((results) => this.setState({userList: results }))
+        this.setState({query: e.target.value}, this.throttledSearch
+            // this.props.search(this.state.query, this.props.workspaceId)
+            //     .then((results) => this.setState({ userList: results }))
         )
     }
 
     throttledSearch() {
-        let ready = false;
-
-        
-        this.props.search(this.state.query, this.props.workspaceId)
-            .then((results) => this.setState({ userList: results }))
+        if (this.state.typing === false) {
+            this.props.search(this.state.query, this.props.workspaceId)
+                .then((results) => this.setState({ userList: results }))
+        }
+        setTimeout(()=> {
+            this.setState({typing: false});
+        }, 1500)
     }
 
     handleSubmit(e) {
