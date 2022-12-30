@@ -2,11 +2,11 @@
   "name": "snack",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.1.2",
+    "@babel/core": "^7.20.7",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "actioncable": "^5.2.3",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.3.0",
     "lodash": "^4.17.11",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -15,8 +15,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
